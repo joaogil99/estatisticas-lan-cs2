@@ -18,5 +18,5 @@ Abra `index.html` no navegador ou sirva a pasta com qualquer servidor estático.
 
 ## Online (GitHub Pages)
 
-Com o repositório no GitHub, ative **Settings → Pages → Deploy from branch `main` / root**.
-A URL fica em `https://SEU_USUARIO.github.io/NOME_DO_REPO/`.
+- Repositório: https://github.com/joaogil99/estatisticas-lan-cs2
+- Site: https://joaogil99.github.io/estatisticas-lan-cs2/
