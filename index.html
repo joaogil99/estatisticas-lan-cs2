@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estatísticas da LAN — CS2</title>
+  <meta name="description" content="Estatísticas da LAN Klok Team — CS2 · 10/07/2026 · Escritório Misterioso" />
+  <link rel="icon" href="assets/klok-team.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <div class="header-brand">
+        <img class="brand-logo" src="assets/klok-team.png" alt="Klok Team" width="104" height="104" />
+        <div class="header-copy">
+          <div class="eyebrow">Counter-Strike 2</div>
+          <h1>Estatísticas da <span>LAN</span></h1>
+          <p class="event-meta">
+            <span>10/07/2026</span>
+            <span class="sep">·</span>
+            <span>Escritório Misterioso</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav-bar" aria-label="Navegação das partidas">
+    <div class="wrap">
+      <div class="nav-scroll" id="nav-links"></div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="wrap">
+      <p class="section-label">Partidas</p>
+      <div id="matches"></div>
+
+      <section id="destaques" aria-labelledby="destaques-title">
+        <p class="section-label" id="destaques-title">Destaques</p>
+        <div class="awards-grid" id="awards-grid"></div>
+      </section>
+
+      <section id="totais" aria-labelledby="totais-title">
+        <p class="section-label">Geral</p>
+        <div class="totals-card" id="totals-card">
+          <div class="totals-head">
+            <h2 id="totais-title">Totais &amp; Médias</h2>
+            <p>Kills, Assists e Deaths somados · KD, ADR e Rating em média por partida</p>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Player</th>
+                  <th>Kills<span class="col-note">total</span></th>
+                  <th>Assists<span class="col-note">total</span></th>
+                  <th>Deaths<span class="col-note">total</span></th>
+                  <th>K/D<span class="col-note">média</span></th>
+                  <th>ADR<span class="col-note">média</span></th>
+                  <th>Rating<span class="col-note">média</span></th>
+                </tr>
+              </thead>
+              <tbody id="totals-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
