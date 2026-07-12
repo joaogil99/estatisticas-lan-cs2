@@ -57,17 +57,17 @@ const MATCH_ROWS = [
     };
 
     const AWARDS = [
-      { title: "Matei o meu", metric: "Mais kills", key: "kills", direction: "max", tone: "glory", format: "int", unit: "kills" },
-      { title: "Cameraman", metric: "Mais mortes", key: "deaths", direction: "max", tone: "roast", format: "int", unit: "deaths" },
-      { title: "Ta podendo matar?", metric: "Menos kills", key: "kills", direction: "min", tone: "roast", format: "int", unit: "kills" },
-      { title: "Iniesta brasileiro", metric: "Mais assists", key: "assists", direction: "max", tone: "glory", format: "int", unit: "assists" },
-      { title: "Só sabe guardar", metric: "Menos mortes", key: "deaths", direction: "min", tone: "glory", format: "int", unit: "deaths" },
-      { title: "HLTV player", metric: "Maior K/D", key: "kd", direction: "max", tone: "glory", format: "kd", unit: "K/D" },
-      { title: "Prime invertido", metric: "Menor K/D", key: "kd", direction: "min", tone: "roast", format: "kd", unit: "K/D" },
-      { title: "Minhas balas não pegam", metric: "Menor ADR", key: "adr", direction: "min", tone: "roast", format: "adr", unit: "ADR" },
-      { title: "Ta miado", metric: "Maior ADR", key: "adr", direction: "max", tone: "glory", format: "adr", unit: "ADR" },
-      { title: "Estudou o leetify", metric: "Maior rating", key: "rating", direction: "max", tone: "glory", format: "rating", unit: "rating" },
-      { title: "Faltou aquecer", metric: "Menor rating", key: "rating", direction: "min", tone: "roast", format: "rating", unit: "rating" },
+      { group: "Kills", title: "Matei o meu", metric: "Mais kills", key: "kills", direction: "max", tone: "glory", format: "int", unit: "kills" },
+      { group: "Kills", title: "Ta podendo matar?", metric: "Menos kills", key: "kills", direction: "min", tone: "roast", format: "int", unit: "kills" },
+      { group: "Mortes", title: "Só sabe guardar", metric: "Menos mortes", key: "deaths", direction: "min", tone: "glory", format: "int", unit: "deaths" },
+      { group: "Mortes", title: "Cameraman", metric: "Mais mortes", key: "deaths", direction: "max", tone: "roast", format: "int", unit: "deaths" },
+      { group: "Assists", title: "Iniesta brasileiro", metric: "Mais assists", key: "assists", direction: "max", tone: "glory", format: "int", unit: "assists" },
+      { group: "K/D", title: "HLTV player", metric: "Maior K/D", key: "kd", direction: "max", tone: "glory", format: "kd", unit: "K/D" },
+      { group: "K/D", title: "Prime invertido", metric: "Menor K/D", key: "kd", direction: "min", tone: "roast", format: "kd", unit: "K/D" },
+      { group: "ADR", title: "Ta miado", metric: "Maior ADR", key: "adr", direction: "max", tone: "glory", format: "adr", unit: "ADR" },
+      { group: "ADR", title: "Minhas balas não pegam", metric: "Menor ADR", key: "adr", direction: "min", tone: "roast", format: "adr", unit: "ADR" },
+      { group: "Rating", title: "Estudou o leetify", metric: "Maior rating", key: "rating", direction: "max", tone: "glory", format: "rating", unit: "rating" },
+      { group: "Rating", title: "Faltou aquecer", metric: "Menor rating", key: "rating", direction: "min", tone: "roast", format: "rating", unit: "rating" },
     ];
 
     function slugify(name) {
@@ -180,17 +180,38 @@ const MATCH_ROWS = [
     }
 
     function renderAwards() {
-      const grid = document.getElementById("awards-grid");
-      grid.innerHTML = AWARDS.map((award) => {
-        const { winners, value } = pickAwardWinners(TOTALS, award.key, award.direction);
-        const names = winners.map((w) => w.player).join(" · ");
+      const container = document.getElementById("awards-grid");
+      const groups = [];
+      const byGroup = new Map();
+
+      for (const award of AWARDS) {
+        if (!byGroup.has(award.group)) {
+          byGroup.set(award.group, []);
+          groups.push(award.group);
+        }
+        byGroup.get(award.group).push(award);
+      }
+
+      container.innerHTML = groups.map((groupName) => {
+        const awards = byGroup.get(groupName);
+        const cards = awards.map((award) => {
+          const { winners, value } = pickAwardWinners(TOTALS, award.key, award.direction);
+          const names = winners.map((w) => w.player).join(" · ");
+          return `
+            <article class="award-card tone-${award.tone}">
+              <div class="award-metric">${award.metric}</div>
+              <h3 class="award-title">${award.title}</h3>
+              <div class="award-winner">${names}</div>
+              <div class="award-value">${formatAwardValue(value, award.format)}<span>${award.unit}</span></div>
+            </article>
+          `;
+        }).join("");
+
         return `
-          <article class="award-card tone-${award.tone}">
-            <div class="award-metric">${award.metric}</div>
-            <h3 class="award-title">${award.title}</h3>
-            <div class="award-winner">${names}</div>
-            <div class="award-value">${formatAwardValue(value, award.format)}<span>${award.unit}</span></div>
-          </article>
+          <section class="award-group${awards.length === 1 ? " award-group--single" : ""}">
+            <h3 class="award-group-title">${groupName}</h3>
+            <div class="awards-grid">${cards}</div>
+          </section>
         `;
       }).join("");
     }
