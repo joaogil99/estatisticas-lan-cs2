@@ -190,11 +190,15 @@ const MATCH_ROWS = [
 
     function avatarHtml(players) {
       return `
-        <div class="award-avatars" aria-hidden="true">
+        <div class="award-avatars">
           ${players.map((p) => {
             const src = AVATARS[p.player];
             if (!src) return "";
-            return `<img class="award-avatar" src="${src}" alt="" width="56" height="56" loading="lazy" />`;
+            return `
+              <div class="award-avatar-ring">
+                <img class="award-avatar" src="${src}" alt="${p.player}" width="96" height="96" loading="lazy" />
+              </div>
+            `;
           }).join("")}
         </div>
       `;
@@ -220,13 +224,9 @@ const MATCH_ROWS = [
           const names = winners.map((w) => w.player).join(" · ");
           return `
             <article class="award-card tone-${award.tone}">
-              <div class="award-card-top">
-                <div class="award-card-copy">
-                  <div class="award-metric">${award.metric}</div>
-                  <h3 class="award-title">${award.title}</h3>
-                </div>
-                ${avatarHtml(winners)}
-              </div>
+              <div class="award-metric">${award.metric}</div>
+              <h3 class="award-title">${award.title}</h3>
+              ${avatarHtml(winners)}
               <div class="award-winner">${names}</div>
               <div class="award-value">${formatAwardValue(value, award.format)}<span>${award.unit}</span></div>
             </article>
