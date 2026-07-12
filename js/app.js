@@ -37,11 +37,11 @@ const MATCH_ROWS = [
     ];
 
     const TOTALS = [
-      { player: "Aaraohn", kills: 90, assists: 34, deaths: 94, kd: 1.117142857142857, adr: 74.14285714285714, rating: -0.3928571428571428 },
-      { player: "SAVAGE", kills: 107, assists: 35, deaths: 85, kd: 1.142857142857143, adr: 84.57142857142857, rating: 1.825714285714286 },
-      { player: "corras", kills: 99, assists: 26, deaths: 88, kd: 1.052857142857143, adr: 66, rating: 1.29 },
-      { player: "dab", kills: 104, assists: 27, deaths: 83, kd: 1.565714285714286, adr: 83.57142857142857, rating: 2.452857142857143 },
-      { player: "klok", kills: 74, assists: 23, deaths: 89, kd: 1.13, adr: 55.57142857142857, rating: -2.574285714285714 },
+      { player: "Aaraohn", kills: 90, assists: 34, deaths: 94, kd: 90 / 94, adr: 74.14285714285714, rating: -0.3928571428571428 },
+      { player: "SAVAGE", kills: 107, assists: 35, deaths: 85, kd: 107 / 85, adr: 84.57142857142857, rating: 1.825714285714286 },
+      { player: "corras", kills: 99, assists: 26, deaths: 88, kd: 99 / 88, adr: 66, rating: 1.29 },
+      { player: "dab", kills: 104, assists: 27, deaths: 83, kd: 104 / 83, adr: 83.57142857142857, rating: 2.452857142857143 },
+      { player: "klok", kills: 74, assists: 23, deaths: 89, kd: 74 / 89, adr: 55.57142857142857, rating: -2.574285714285714 },
     ];
 
     const MAP_ORDER = ["Anubis", "Cache", "Ancient 1", "Inferno", "Dust2", "Nuke", "Ancient 2"];
