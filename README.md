@@ -5,10 +5,17 @@ Página de estatísticas da LAN de CS2 (10/07/2026 · Escritório Misterioso).
 ## Estrutura
 
 ```
-├── index.html              # Página principal
-├── css/styles.css          # Estilos
-├── js/app.js               # Dados e renderização
-├── assets/klok-team.png    # Logo da equipe
+├── index.html
+├── css/styles.css
+├── js/app.js
+├── assets/
+│   ├── klok-team.png
+│   └── avatars/
+│       ├── aaraohn.jpg
+│       ├── corras.jpg
+│       ├── dab.jpg
+│       ├── klok.jpg
+│       └── savage.jpg
 └── Estatisticas_CS2_Estilizado.xlsx
 ```
 

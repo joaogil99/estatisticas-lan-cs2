@@ -62,6 +62,7 @@ const MATCH_ROWS = [
       { group: "Mortes", title: "Só sabe guardar", metric: "Menos mortes", key: "deaths", direction: "min", tone: "glory", format: "int", unit: "deaths" },
       { group: "Mortes", title: "Cameraman", metric: "Mais mortes", key: "deaths", direction: "max", tone: "roast", format: "int", unit: "deaths" },
       { group: "Assists", title: "Iniesta brasileiro", metric: "Mais assists", key: "assists", direction: "max", tone: "glory", format: "int", unit: "assists" },
+      { group: "Assists", title: "Nem tentou", metric: "Menos assists", key: "assists", direction: "min", tone: "roast", format: "int", unit: "assists" },
       { group: "K/D", title: "HLTV player", metric: "Maior K/D", key: "kd", direction: "max", tone: "glory", format: "kd", unit: "K/D" },
       { group: "K/D", title: "Prime invertido", metric: "Menor K/D", key: "kd", direction: "min", tone: "roast", format: "kd", unit: "K/D" },
       { group: "ADR", title: "Ta miado", metric: "Maior ADR", key: "adr", direction: "max", tone: "glory", format: "adr", unit: "ADR" },
@@ -69,6 +70,14 @@ const MATCH_ROWS = [
       { group: "Rating", title: "Estudou o leetify", metric: "Maior rating", key: "rating", direction: "max", tone: "glory", format: "rating", unit: "rating" },
       { group: "Rating", title: "Faltou aquecer", metric: "Menor rating", key: "rating", direction: "min", tone: "roast", format: "rating", unit: "rating" },
     ];
+
+    const AVATARS = {
+      Aaraohn: "assets/avatars/aaraohn.jpg",
+      SAVAGE: "assets/avatars/savage.jpg",
+      corras: "assets/avatars/corras.jpg",
+      dab: "assets/avatars/dab.jpg",
+      klok: "assets/avatars/klok.jpg",
+    };
 
     function slugify(name) {
       return "map-" + name.toLowerCase().replace(/\s+/g, "-");
@@ -179,6 +188,18 @@ const MATCH_ROWS = [
       return { winners, value: best };
     }
 
+    function avatarHtml(players) {
+      return `
+        <div class="award-avatars" aria-hidden="true">
+          ${players.map((p) => {
+            const src = AVATARS[p.player];
+            if (!src) return "";
+            return `<img class="award-avatar" src="${src}" alt="" width="56" height="56" loading="lazy" />`;
+          }).join("")}
+        </div>
+      `;
+    }
+
     function renderAwards() {
       const container = document.getElementById("awards-grid");
       const groups = [];
@@ -199,8 +220,13 @@ const MATCH_ROWS = [
           const names = winners.map((w) => w.player).join(" · ");
           return `
             <article class="award-card tone-${award.tone}">
-              <div class="award-metric">${award.metric}</div>
-              <h3 class="award-title">${award.title}</h3>
+              <div class="award-card-top">
+                <div class="award-card-copy">
+                  <div class="award-metric">${award.metric}</div>
+                  <h3 class="award-title">${award.title}</h3>
+                </div>
+                ${avatarHtml(winners)}
+              </div>
               <div class="award-winner">${names}</div>
               <div class="award-value">${formatAwardValue(value, award.format)}<span>${award.unit}</span></div>
             </article>
