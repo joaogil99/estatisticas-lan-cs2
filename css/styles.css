@@ -512,9 +512,9 @@
     }
 
     .awards-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.35rem;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem 1.25rem;
     }
 
     .award-group-title {
@@ -529,13 +529,13 @@
 
     .awards-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 280px));
-      gap: 1rem;
-      justify-content: start;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.85rem;
+      justify-content: stretch;
     }
 
     .award-group--single .awards-grid {
-      grid-template-columns: minmax(0, 280px);
+      grid-template-columns: minmax(0, 1fr);
       max-width: none;
     }
 
@@ -556,7 +556,7 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      min-height: 320px;
+      min-height: 300px;
     }
 
     .award-card.is-visible {
@@ -699,36 +699,42 @@
         width: 100%;
       }
 
+      .awards-list {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+
       .awards-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         justify-content: stretch;
       }
 
       .award-group--single .awards-grid {
-        grid-template-columns: minmax(0, 280px);
+        grid-template-columns: minmax(0, 1fr);
       }
 
       .award-card {
-        min-height: 300px;
+        min-height: 280px;
         padding: 1.15rem 1rem 1.25rem;
       }
 
       .award-avatar-ring {
-        width: 92px;
-        height: 92px;
+        width: 88px;
+        height: 88px;
       }
 
       .award-title {
-        font-size: 1.2rem;
+        font-size: 1.15rem;
         margin-bottom: 1rem;
+        max-width: none;
       }
 
       .award-winner {
-        font-size: 1.1rem;
+        font-size: 1.05rem;
       }
 
       .award-value {
-        font-size: 1.5rem;
+        font-size: 1.45rem;
       }
     }
 
@@ -915,6 +921,11 @@
         font-size: 0.92rem;
       }
 
+      .awards-list {
+        grid-template-columns: 1fr;
+        gap: 1.15rem;
+      }
+
       .awards-grid {
         grid-template-columns: 1fr;
         gap: 0.85rem;
@@ -923,17 +934,13 @@
 
       .award-group--single .awards-grid {
         grid-template-columns: 1fr;
-        max-width: 320px;
-        margin-inline: auto;
+        max-width: none;
+        margin-inline: 0;
       }
 
       .award-group-title {
         font-size: 0.85rem;
         margin-bottom: 0.5rem;
-      }
-
-      .awards-list {
-        gap: 1.1rem;
       }
 
       .award-card {
