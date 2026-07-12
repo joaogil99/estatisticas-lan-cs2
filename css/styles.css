@@ -587,41 +587,270 @@
       margin-left: 0.35rem;
     }
 
-    /* Spacing */
-    @media (max-width: 640px) {
-      .wrap {
-        width: calc(100% - 1.25rem);
-      }
-
-      .site-header {
-        padding-top: 1.75rem;
-      }
-
-      .header-brand {
-        gap: 0.85rem;
-      }
-
+    /* Tablet */
+    @media (max-width: 860px) {
       .nav-scroll a.nav-special.totals-link {
         margin-left: 0;
+      }
+
+      .match-head {
+        align-items: flex-start;
       }
 
       .match-meta {
         justify-content: flex-start;
         width: 100%;
       }
+    }
 
-      .awards-grid {
-        grid-template-columns: 1fr;
+    /* Mobile */
+    @media (max-width: 640px) {
+      html {
+        scroll-padding-top: 64px;
+      }
+
+      .wrap {
+        width: calc(100% - 1rem);
+      }
+
+      .site-header {
+        padding: 1.35rem 0 1.1rem;
+      }
+
+      .header-brand {
+        gap: 0.75rem;
+        align-items: flex-start;
+      }
+
+      .brand-logo {
+        width: 64px;
+        margin-top: 0.15rem;
+      }
+
+      .eyebrow {
+        font-size: 0.68rem;
+        margin-bottom: 0.35rem;
+      }
+
+      .site-header h1 {
+        font-size: clamp(1.7rem, 8.5vw, 2.35rem);
+      }
+
+      .event-meta {
+        margin-top: 0.5rem;
+        font-size: 0.85rem;
+        gap: 0.3rem 0.55rem;
+      }
+
+      .nav-bar {
+        top: 0;
+      }
+
+      .nav-scroll {
+        gap: 0.35rem;
+        padding: 0.55rem 0;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+
+      .nav-scroll::-webkit-scrollbar {
+        display: none;
+      }
+
+      .nav-scroll a {
+        font-size: 0.88rem;
+        padding: 0.55rem 0.75rem;
+        border-radius: 6px;
+        background: rgba(20, 26, 34, 0.65);
+        border-color: var(--border-soft);
+      }
+
+      main {
+        padding: 1.25rem 0 3rem;
+      }
+
+      .section-label {
+        margin: 1.5rem 0 0.75rem;
+        font-size: 0.82rem;
+      }
+
+      .match-card {
+        margin-bottom: 0.95rem;
+        border-radius: 8px;
+      }
+
+      .match-head {
+        padding: 0.85rem 0.85rem 0.8rem;
+        gap: 0.65rem;
+      }
+
+      .match-title {
+        gap: 0.55rem;
+      }
+
+      .match-title h2 {
+        font-size: 1.35rem;
+      }
+
+      .match-index {
+        font-size: 0.78rem;
+        min-width: 1.65rem;
+      }
+
+      .score-board {
+        font-size: 1.35rem;
+      }
+
+      .result-pill,
+      .tag-pill {
+        font-size: 0.68rem;
+        padding: 0.35rem 0.5rem;
+      }
+
+      .table-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-x: contain;
+        background:
+          linear-gradient(90deg, var(--panel) 70%, transparent),
+          linear-gradient(90deg, transparent, var(--panel) 30%) 100% 0,
+          linear-gradient(90deg, rgba(0, 0, 0, 0.35), transparent),
+          linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.35)) 100% 0;
+        background-repeat: no-repeat;
+        background-size: 28px 100%, 28px 100%, 14px 100%, 14px 100%;
+        background-attachment: local, local, scroll, scroll;
+      }
+
+      table {
+        min-width: 560px;
+        font-size: 0.84rem;
       }
 
       thead th,
       tbody td {
-        padding: 0.6rem 0.55rem;
-        font-size: 0.85rem;
+        padding: 0.65rem 0.5rem;
+      }
+
+      thead th {
+        font-size: 0.72rem;
+        letter-spacing: 0.06em;
+        padding-top: 0.7rem;
+        padding-bottom: 0.65rem;
       }
 
       thead th:first-child,
       tbody td:first-child {
-        padding-left: 0.75rem;
+        position: sticky;
+        left: 0;
+        z-index: 2;
+        padding-left: 0.85rem;
+        padding-right: 0.75rem;
+        min-width: 7.5rem;
+        box-shadow: 6px 0 10px -8px rgba(0, 0, 0, 0.55);
+      }
+
+      thead th:first-child {
+        background: var(--bg-elevated);
+        z-index: 3;
+      }
+
+      tbody td:first-child {
+        background: var(--panel);
+      }
+
+      tbody tr:nth-child(even) td:first-child {
+        background: #161d26;
+      }
+
+      tbody tr:hover td:first-child {
+        background: var(--panel-hover);
+      }
+
+      tbody tr.is-mvp td:first-child {
+        background: #1a2018;
+      }
+
+      .player-cell {
+        gap: 0.45rem;
+      }
+
+      .player-name {
+        font-size: 0.9rem;
+      }
+
+      .rank {
+        font-size: 0.8rem;
+      }
+
+      .rating-cell {
+        font-size: 0.92rem;
+      }
+
+      .awards-grid {
+        grid-template-columns: 1fr;
+        gap: 0.7rem;
+      }
+
+      .award-card {
+        padding: 1rem 1rem 1.05rem 1.1rem;
+      }
+
+      .award-title {
+        font-size: 1.2rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .award-winner {
+        font-size: 1.05rem;
+      }
+
+      .award-value {
+        font-size: 1.4rem;
+      }
+
+      .totals-head {
+        padding: 1rem 0.9rem 0.9rem;
+      }
+
+      .totals-head h2 {
+        font-size: 1.4rem;
+      }
+
+      .totals-head p {
+        font-size: 0.82rem;
+        line-height: 1.4;
+      }
+
+      .col-note {
+        font-size: 0.62rem;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .brand-logo {
+        width: 56px;
+      }
+
+      .header-brand {
+        gap: 0.65rem;
+      }
+
+      table {
+        min-width: 520px;
+      }
+
+      thead th:first-child,
+      tbody td:first-child {
+        min-width: 6.75rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .match-card,
+      .totals-card,
+      .award-card {
+        opacity: 1;
+        transform: none;
+        transition: none;
       }
     }
