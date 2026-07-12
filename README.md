@@ -16,7 +16,8 @@ Página de estatísticas da LAN de CS2 (10/07/2026 · Escritório Misterioso).
 │       ├── dab.jpg
 │       ├── klok.jpg
 │       └── savage.jpg
-└── Estatisticas_CS2_Estilizado.xlsx
+└── data/
+    └── Estatisticas_CS2.xlsx
 ```
 
 ## Local
