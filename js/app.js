@@ -47,13 +47,13 @@ const MATCH_ROWS = [
     const MAP_ORDER = ["Anubis", "Cache", "Ancient 1", "Inferno", "Dust2", "Nuke", "Ancient 2"];
 
     const MATCH_RESULTS = {
-      "Anubis": { us: 0, them: 2, result: "forfeit", label: "Desistência" },
-      "Cache": { us: 13, them: 6, result: "win", label: "Vitória" },
-      "Ancient 1": { us: 13, them: 7, result: "win", label: "Vitória" },
-      "Inferno": { us: 10, them: 13, result: "loss", label: "Derrota", tag: "Faceit" },
-      "Dust2": { us: 15, them: 15, result: "draw", label: "Empate" },
-      "Nuke": { us: 13, them: 1, result: "win", label: "Vitória" },
-      "Ancient 2": { us: 8, them: 13, result: "loss", label: "Derrota" },
+      "Anubis": { us: 0, them: 2, result: "forfeit", label: "Desistência", leetify: "https://leetify.com/app/match-details/4e508021-79d4-4eda-9053-7f495797f3d0/your-match" },
+      "Cache": { us: 13, them: 6, result: "win", label: "Vitória", leetify: "https://leetify.com/app/match-details/89b94ce6-fa96-46d6-a807-c123c507497e/your-match" },
+      "Ancient 1": { us: 13, them: 7, result: "win", label: "Vitória", leetify: "https://leetify.com/app/match-details/26cff432-b31d-4f3b-a32d-68affb17a0b6/your-match" },
+      "Inferno": { us: 10, them: 13, result: "loss", label: "Derrota", tag: "Faceit", leetify: "https://leetify.com/app/match-details/977c2c6c-ad4c-4a3d-921f-2238494e27f7/your-match" },
+      "Dust2": { us: 15, them: 15, result: "draw", label: "Empate", leetify: "https://leetify.com/app/match-details/18ed2193-413a-45da-b729-3546da9c932e/your-match" },
+      "Nuke": { us: 13, them: 1, result: "win", label: "Vitória", leetify: "https://leetify.com/app/match-details/68ea50b4-a7e4-4448-abbe-45aa1a646cbd/your-match" },
+      "Ancient 2": { us: 8, them: 13, result: "loss", label: "Derrota", leetify: "https://leetify.com/app/match-details/a9506a9a-0380-4faf-91e9-955f6d17526f/your-match" },
     };
 
     const AWARDS = [
@@ -287,12 +287,15 @@ const MATCH_ROWS = [
           .join("");
 
         const tagHtml = result.tag ? `<span class="tag-pill">${result.tag}</span>` : "";
+        const mapTitle = result.leetify
+          ? `<h2><a class="map-link" href="${result.leetify}" target="_blank" rel="noopener noreferrer" title="Abrir partida no Leetify">${map}</a></h2>`
+          : `<h2>${map}</h2>`;
 
         card.innerHTML = `
           <div class="match-head">
             <div class="match-title">
               <span class="match-index">#${String(index + 1).padStart(2, "0")}</span>
-              <h2>${map}</h2>
+              ${mapTitle}
             </div>
             <div class="match-meta">
               <div class="score-board" aria-label="Placar ${result.us} a ${result.them}">
